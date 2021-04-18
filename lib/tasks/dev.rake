@@ -3,6 +3,7 @@ task sample_data: :environment do
 
   if Rails.env.development?
     FollowRequest.destroy_all
+    Photo.destroy_all
     User.destroy_all
   end
 
@@ -23,14 +24,14 @@ task sample_data: :environment do
 
   users.each do |first_user|
     users.each do |second_user|
-      if first_user.id > second_user.id
+      if rand < 0.75
         first_user.sent_follow_requests.create(
           recipient: second_user,
           status: FollowRequest.statuses.keys.sample
         )
       end
       
-      if first_user.id < second_user.id
+      if rand < 0.75
         second_user.sent_follow_requests.create(
           recipient: first_user,
           status: FollowRequest.statuses.keys.sample
@@ -39,6 +40,19 @@ task sample_data: :environment do
     end
   end
   p "#{FollowRequest.count} follow requests have been sent"
-  # p "#{FollowRequest}"
+
+  # create a few photos
+  15.times do
+    users.each do |user|
+      photo = user.own_photos.create(
+        image: "https://robohash.org/#{Faker::Alphanumeric.alpha(number: 10)}",
+        caption: "#{Faker::Movies::LordOfTheRings.character} at #{Faker::Movies::LordOfTheRings.location}"
+      )
+    end
+  end
+
+  p "#{Photo.count} photos have been posted."
+
+  # leave a few comments, likes
 
 end
