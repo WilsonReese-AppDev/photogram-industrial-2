@@ -4,7 +4,7 @@ class CreateFollowRequests < ActiveRecord::Migration[6.1]
       t.references :recipient, null: false, foreign_key: {to_table: :users}, index: true
       t.references :sender, null: false, foreign_key: {to_table: :users}, index: true
       t.string :status, default: "pending"
-# test
+
       t.timestamps
     end
   end
