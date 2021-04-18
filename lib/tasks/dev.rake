@@ -3,6 +3,8 @@ task sample_data: :environment do
 
   if Rails.env.development?
     FollowRequest.destroy_all
+    Comment.destroy_all
+    Like.destroy_all
     Photo.destroy_all
     User.destroy_all
   end
@@ -48,11 +50,29 @@ task sample_data: :environment do
         image: "https://robohash.org/#{Faker::Alphanumeric.alpha(number: 10)}",
         caption: "#{Faker::Movies::LordOfTheRings.character} at #{Faker::Movies::LordOfTheRings.location}"
       )
+
+      user.followers.each do |follower|
+        if rand < 0.5
+          photo.likes.create(
+            fan: follower
+          )
+        end
+
+        if rand < 0.25
+          photo.comments.create(
+            body: Faker::Quote.singular_siegler,
+            author: follower
+          )
+        end
+      end
     end
   end
 
   p "#{Photo.count} photos have been posted."
+  p "#{Like.count} likes."
+  p "#{Comment.count} comments."
 
   # leave a few comments, likes
+  
 
 end
