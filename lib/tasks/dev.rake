@@ -8,7 +8,7 @@ task sample_data: :environment do
     Photo.destroy_all
     User.destroy_all
   end
-# can I test to see if this does anything
+
   12.times do
     user_info = { 
       email: Faker::Internet.unique.safe_email,
