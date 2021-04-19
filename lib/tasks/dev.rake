@@ -9,14 +9,18 @@ task sample_data: :environment do
     User.destroy_all
   end
 
-  12.times do
-    user_info = { 
-      email: Faker::Internet.unique.safe_email,
+  usernames = Array.new
+  6.times { usernames << Faker::Name.unique.first_name }
+  usernames << "alice"
+  usernames << "bob"
+
+  usernames.each do |username|
+    User.create( 
+      email: "#{username}@example.com",
       password: "password",
-      username: Faker::Internet.unique.username,
+      username: username.downcase,
       private: [true, false].sample
-    }
-    u = User.create(user_info)
+    ) 
   end
   
   p "#{User.count} users have been created."
