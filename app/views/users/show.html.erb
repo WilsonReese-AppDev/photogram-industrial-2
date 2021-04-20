@@ -31,7 +31,7 @@
         </ul>
 
         <div class="card-body">
-          <%= render "/comments/form", comment: Comment.new %>
+          <%= render "/comments/form", comment: Comment.new(photo: photo) %>
         </div>
       </div>
     </div>
