@@ -57,7 +57,7 @@ class PhotosController < ApplicationController
   end
 
   def liked
-    
+    @user = User.find_by!(username: params.fetch(:username))
   end
 
   private
