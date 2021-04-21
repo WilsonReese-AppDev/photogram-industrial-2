@@ -11,7 +11,7 @@
         <%= link_to "Liked Photos", liked_photos_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Feed", feed_path(@user.username), class: "nav-item" %>
+        <%= link_to "Feed", feed_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Followers</a>
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<%= @user.leaders.own_photos.count %>
+<%= @user.feed.count %>
 
 <% @user.feed.each do |photo| %> <!-- current_user.own_photos.each -->
   <%= render "photos/photo", photo: photo %>
