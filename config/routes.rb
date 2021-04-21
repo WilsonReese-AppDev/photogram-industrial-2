@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # resources :users, only: :show
 
   get ":username/liked" => "photos#liked", as: :liked_photos
-  # get ":username/feed" => "photos#liked", as: :liked_photos
+  get ":username/feed" => "users#feed", as: :feed
   # get ":username/followers" => "photos#liked", as: :liked_photos
   # get ":username/following" => "photos#liked", as: :liked_photos
 
