@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get ":username/liked" => "photos#liked", as: :liked_photos
   get ":username/feed" => "users#feed", as: :feed
-  # get ":username/followers" => "photos#liked", as: :liked_photos
+  get ":username/followers" => "users#followers", as: :followers
   # get ":username/following" => "photos#liked", as: :liked_photos
 
   get ":username" => "users#show", as: :user #must be last route
