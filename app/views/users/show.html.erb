@@ -1,6 +1,29 @@
-<h1><%= @user.username.capitalize %>'s Page </h1>
-
 <h2>Own Photos</h2>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1><%= @user.username %> </h1>
+    
+    <ul class="nav nav-pills nav-justified">
+      
+      <li class="nav-item">
+        <%= link_to "Posts", user_path(@user.username), class: "nav-item"%>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= @user.username %>#liked">Liked Photos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Feed</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Followers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Following</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <% @user.own_photos.each do |photo| %> <!-- current_user.own_photos.each -->
   <div class="row mb-1">

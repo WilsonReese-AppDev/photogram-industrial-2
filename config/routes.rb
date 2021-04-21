@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :photos
   # resources :users, only: :show
 
-  get "/:username" => "users#show" #must be last route
+  get ":username/liked" => "photos#liked", as: :liked_photos
+
+  get ":username" => "users#show", as: :user #must be last route
 end
