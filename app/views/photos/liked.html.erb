@@ -1,7 +1,5 @@
 <%= render "shared/tabbed_interface" %>
 
-<%= @user.liked_photos.count %>
-
 <% @user.liked_photos.each do |photo| %> <!-- current_user.own_photos.each -->
   <%= render "photos/photo", photo: photo %>
     

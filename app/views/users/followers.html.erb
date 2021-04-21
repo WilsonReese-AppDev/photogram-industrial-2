@@ -1,7 +1,11 @@
 <%= render "shared/tabbed_interface" %>
 
-<div class="list-group">
-  <% @user.followers.each do |follower| %>
-    <%= link_to follower.username, user_path(follower.username), class: "list-group-item list-group-item-action" %>
-  <% end %>
+<div class="row mb-1">
+  <div class="col-md-6 offset-md-3">
+    <div class="list-group">
+      <% @user.followers.each do |follower| %>
+        <%= link_to follower.username, user_path(follower.username), class: "list-group-item list-group-item-action" %>
+      <% end %>
+    </div>
+  </div>
 </div>

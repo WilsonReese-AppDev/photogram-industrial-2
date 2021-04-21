@@ -1,12 +1,5 @@
 <%= render "shared/tabbed_interface" %>
 
-<% @user.leaders.each do |leader| %>
-  <div><%= leader.username %></div>
-<% end %>
-
-<div><%= @user.feed.count %></div>
-
 <% @user.feed.each do |photo| %> <!-- current_user.own_photos.each -->
   <%= render "photos/photo", photo: photo %>
-    
 <% end %>

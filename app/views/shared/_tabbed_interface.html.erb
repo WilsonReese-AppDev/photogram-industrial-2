@@ -17,7 +17,7 @@
         <%= link_to "Followers (#{@user.followers.count})", followers_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Following</a>
+        <%= link_to "Following (#{@user.leaders.count})", following_path(@user.username), class: "nav-link" %>
       </li>
     </ul>
   </div>
