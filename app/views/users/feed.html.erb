@@ -1,5 +1,10 @@
-<%= render "shared/tabbed_interface" %>
+<div class="row mb-1">
+  <div class="col-md-6 offset-md-3">
+    <h1>feed</h1>
+    <h4>posts by people you follow</h4>
+  </div>
+</div>
 
-<% @user.feed.each do |photo| %> <!-- current_user.own_photos.each -->
+<% current_user.feed.each do |photo| %> <!-- current_user.own_photos.each -->
   <%= render "photos/photo", photo: photo %>
 <% end %>

@@ -11,7 +11,7 @@
         <%= link_to "Liked Photos (#{@user.liked_photos.count})", liked_photos_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Feed (#{@user.feed.count})", feed_path(@user.username), class: "nav-link" %>
+        <%= link_to "Feed (#{current_user.feed.count})", feed_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Followers (#{@user.followers.count})", followers_path(@user.username), class: "nav-link" %>

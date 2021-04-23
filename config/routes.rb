@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "photos#index"
+  root "users#feed"
 
   
   devise_for :users
