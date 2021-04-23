@@ -5,10 +5,11 @@ class UsersController < ApplicationController
   end
 
   def feed
-    # @user = User.find_by!(username: params.fetch(:username))
+    @user = current_user
   end
 
   def discover
+    @user = current_user
   end
 
   def followers
