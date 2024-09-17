@@ -1,0 +1,11 @@
+<%= render "shared/tabbed_interface" %>
+
+<div class="row mb-1">
+  <div class="col-md-6 offset-md-3">
+    <div class="list-group">
+      <% @user.leaders.each do |leader| %>
+        <%= link_to leader.username, user_path(leader.username), class: "list-group-item list-group-item-action" %>
+      <% end %>
+    </div>
+  </div>
+</div>

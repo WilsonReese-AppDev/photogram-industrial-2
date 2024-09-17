@@ -1,0 +1,51 @@
+<div class="row mb-1">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body py-3 d-flex align-items-center justify-content-between">
+        <h2 class="h5 m-0 p-0 d-flex align-items-center">
+          <%= link_to photo.image do %>
+            <%= image_tag photo.owner.own_photos.first, class: "rounded-circle mr-2", width: 36 %>
+          <% end %>
+          <%= link_to photo.owner.username, user_path(photo.owner.username), class: "text-dark" %>
+        </h2>
+        <div>
+          <%= link_to edit_photo_path(photo), class: "btn btn-link btn-sm text-muted" do %>
+            <i class="fas fa-edit fa-fw"></i>
+          <% end %>
+          <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+            <i class="fas fa-trash fa-fw"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <%= image_tag photo.image, class: "img-fluid" %>
+
+      <div class="card-body">
+        <h5 class="card-title"><%= photo.owner.username %></h5>
+        <p class="card-text"><%= photo.caption %></p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <% photo.comments.each do |comment| %>
+          <li class="list-group-item">
+            <div class="media">
+              <img src="..." class="mr-3" alt="...">
+              <div class="media-body">
+                <h5 class="mt-0">
+                  <%= comment.author.username %>
+                </h5>
+                <p>
+                  <%= comment.body %>
+                </p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="card-body">
+        <%= render "/comments/form", comment: Comment.new(photo: photo) %>
+      </div>
+    </div>
+  </div>
+</div>   

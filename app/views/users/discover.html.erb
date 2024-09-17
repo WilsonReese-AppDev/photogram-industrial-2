@@ -1,0 +1,10 @@
+<div class="row mb-1">
+  <div class="col-md-6 offset-md-3">
+    <h1>discover</h1>
+    <h4>posts liked by people you follow</h4>
+  </div>
+</div>
+
+<% @user.discover.each do |photo| %> <!-- current_user.own_photos.each -->
+  <%= render "photos/photo", photo: photo %>
+<% end %>
